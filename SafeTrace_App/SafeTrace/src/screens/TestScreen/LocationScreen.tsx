@@ -218,8 +218,9 @@ export const LocationScreen = () => {
 
                   if (!!node) {
                     if (node.node_id === 1) {
-                      const d = Buffer.from(JSON.stringify({ share1 }));
-                      const buf = encrypt(node.public_key, share1);
+                      console.log('share1', JSON.stringify({ data: share1 }));
+                      const d = Buffer.from(JSON.stringify({ data: share1 }));
+                      const buf = encrypt(node.public_key, d);
                       const encoded = b64encode(buf);
 
                       sharesBody.push({
@@ -229,8 +230,9 @@ export const LocationScreen = () => {
                     }
 
                     if (node.node_id === 2) {
-                      const d = Buffer.from(JSON.stringify({ share2 }));
-                      const buf = encrypt(node.public_key, share3);
+                      console.log('share2', JSON.stringify({ data: share2 }));
+                      const d = Buffer.from(JSON.stringify({ data: share2 }));
+                      const buf = encrypt(node.public_key, d);
                       const encoded = b64encode(buf);
 
                       sharesBody.push({
@@ -240,8 +242,9 @@ export const LocationScreen = () => {
                     }
 
                     if (node.node_id === 3) {
-                      const d = Buffer.from(JSON.stringify({ share3 }));
-                      const buf = encrypt(node.public_key, share3);
+                      console.log('share3', JSON.stringify({ data: share3 }));
+                      const d = Buffer.from(JSON.stringify({ data: share3 }));
+                      const buf = encrypt(node.public_key, d);
                       const encoded = b64encode(buf);
 
                       sharesBody.push({
@@ -251,6 +254,8 @@ export const LocationScreen = () => {
                     }
                   }
                 }
+
+                console.log(JSON.stringify(sharesBody));
 
                 dispatch(
                   postShares(
