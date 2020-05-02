@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import * as Location from 'expo-location';
 
-import Fences from '../geofences/fences.json';
+import Fences from '../geofences/mvp.json';
 
 // Thunk Action
 export const getNodes = createAsyncThunk<any>(
@@ -38,6 +38,8 @@ export const postShares = createAsyncThunk<any>(
     if (response.status !== 200) {
       return thunkApi.rejectWithValue((await response.json()) as any);
     }
+
+    alert('SUCCESS');
 
     return (await response.json()) as any;
   },
